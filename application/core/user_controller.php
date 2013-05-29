@@ -5,13 +5,15 @@
  * Desc.: 	Base controller for all logged-in users.		
  */
 
-class User_Controller extends MY_Controller {
+class Member_Controller extends MY_Controller {
 	
 	public function __construct() 
 	{
 		parent::__construct();
+		
+		
 	}
 }
 
-/* End of file user_controller.php */
-/* Location: ./application/core/user_controller.php */
+/* End of file member_controller.php */
+/* Location: ./application/core/member_controller.php */

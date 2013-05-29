@@ -1,7 +1,10 @@
 <?= validation_errors(); ?>
+<? if (isset($invalid_user_error)) echo $invalid_user_error; ?>
+
+<p><a href="<?= site_url('member/logout') ?>">Logout</a></p>
 
 <!-- BEGIN LOGIN FORM -->
-<?= form_open('member/login') ?>
+<?= form_open('welcome/login') ?>
 <fieldset>
 <h3>Login</h3>
 <p>
@@ -21,7 +24,7 @@
 <!-- END LOGIN FORM -->
 
 <!-- BEGIN REGISTRATION FORM -->
-<?= form_open('member/register') ?>
+<?= form_open('welcome/register') ?>
 <fieldset>
 <h3>Register</h3>
 
@@ -46,7 +49,7 @@
 
 <p>
 <label for="password">Password</label>
-<input type="text" id="reg-password" name="reg_password" value="<?= set_value('reg_password') ?>" />
+<input type="password" id="reg-password" name="reg_password" value="<?= set_value('reg_password') ?>" />
 </p>
 
 

@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= '';
+$config['base_url']	= 'http://local.regexp.com/photoshare/';
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +224,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'k8Y4blX9jXQ63A7yw551AA31N1yYa9A7';
 
 /*
 |--------------------------------------------------------------------------
@@ -244,15 +244,15 @@ $config['encryption_key'] = '';
 | 'sess_time_to_update'		= how many seconds between CI refreshing Session Information
 |
 */
-$config['sess_cookie_name']		= 'ci_session';
-$config['sess_expiration']		= 7200;
+$config['sess_cookie_name']		= 'cisession';
+$config['sess_expiration']		= 86400;
 $config['sess_expire_on_close']	= FALSE;
 $config['sess_encrypt_cookie']	= FALSE;
-$config['sess_use_database']	= FALSE;
+$config['sess_use_database']	= TRUE;
 $config['sess_table_name']		= 'ci_sessions';
 $config['sess_match_ip']		= FALSE;
 $config['sess_match_useragent']	= TRUE;
-$config['sess_time_to_update']	= 300;
+$config['sess_time_to_update']	= 3000;
 
 /*
 |--------------------------------------------------------------------------
@@ -265,9 +265,9 @@ $config['sess_time_to_update']	= 300;
 | 'cookie_secure' =  Cookies will only be set if a secure HTTPS connection exists.
 |
 */
-$config['cookie_prefix']	= "";
-$config['cookie_domain']	= "";
-$config['cookie_path']		= "/";
+$config['cookie_prefix']	= '';
+$config['cookie_domain']	= ''; //str_replace('http://', '', $config['base_url']);
+$config['cookie_path']		= ''; //'/Users/zakir/Sites/regexp/www/photoshare/';
 $config['cookie_secure']	= FALSE;
 
 /*
@@ -361,6 +361,10 @@ $config['proxy_ips'] = '';
 /*
 | -------------------------------------------------------------------
 |  Native Auto-load
+|  This is used to autoload the controllers that extend our custom
+|  MY_Controller class. This method was recommended by Phil Sturgeon
+|  in his article: "CodeIgniter Base Classes: Keeping it DRY"
+|  http://philsturgeon.co.uk/blog/2010/02/CodeIgniter-base-Classes-Keeping-it-DRY
 | -------------------------------------------------------------------
 | 
 | Nothing to do with config/autoload.php, this allows PHP autoload to work

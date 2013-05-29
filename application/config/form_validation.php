@@ -1,7 +1,15 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/*
+|--------------------------------------------------------------------------
+| Form Validation
+|--------------------------------------------------------------------------
+| Our form validation configuration. 
+|
+*/
+
 $config = array(
-	'member/login' => array(
+	'welcome/login' => array(
 		array (
 			'field'	=> 'log_username',
 			'label'	=> 'Username',
@@ -14,26 +22,26 @@ $config = array(
 		)
 	),
 	
-	'member/register'	=> array(
+	'welcome/register'	=> array(
 		array(	
 			'field'	=> 'reg_username',
 			'label'	=> 'Username',
-			'rules'	=> 'required|is_unique[members.username]'
+			'rules'	=> 'required|min_length[6]|max_length[20]|alpha_numeric|is_unique[members.username]'
 		),
 		array (
 			'field'	=> 'reg_password',
 			'label'	=> 'Password',
-			'rules'	=> 'required|min_length[8]|max_length[16]|callback_password_check'
+			'rules'	=> 'required|min_length[8]|max_length[16]|callback__password_check'
 		),
 		array (
 			'field'	=> 'first_name',
 			'label'	=> 'First name',
-			'rules'	=> 'required'
+			'rules'	=> 'required|min_length[2]|max_length[40]|callback__name_check'
 		),
 		array (
 			'field'	=> 'last_name',
 			'label'	=> 'Last name',
-			'rules'	=> 'required'
+			'rules'	=> 'required|min_length[2]|max_length[40]|callback__name_check'
 		),
 		array (
 			'field'	=> 'email',

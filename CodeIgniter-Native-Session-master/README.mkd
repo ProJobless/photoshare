@@ -1,0 +1,10 @@
+Install and Usage
+======================
+
+    $ cp config/session.php your_application/config/
+    $ cp libraries/Session.php your_application/libraries/
+
+If you run multiple applications on the same site, please modify your_application/config/session.php file line:
+
+    // Session namespace
+    $config['sess_namespace'] = 'your_application_name';

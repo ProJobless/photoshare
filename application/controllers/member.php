@@ -6,64 +6,34 @@ class Member extends MY_Controller
 	{
 		parent::__construct();
 		
-		$this->load->helper(array('url', 'form'));				
-		$this->load->model('member_model');
-		$this->load->library('form_validation');
 		$this->load->database(); 
-	}
-	
-	public function index()
-	{
-		redirect('welcome', 'location', 301);						
-	}
-	
-	public function login()
-	{			
-		// Validate the login form
-		if ( ! $this->form_validation->run())
-		{
-			// Take user back to the form with errors
-			$data['main'] = 'welcome/login_register';
-			$data['title'] = 'Login/Register';
-			$this->load->view('template', $data);		
-		}	
-		else
-		{
-			$input = array(
-				'username' => $this->input->post('log_username'),
-				'password' => $this->input->post('log_password')
-			);
-							
-			$member = $this->member_model->validate_member($input);
-			if ($member !== FALSE)
-			{
-				echo 'Welcome ' .  $member->username;
-			}
-		}
-	}
-	
-	public function register()
-	{	 			
-			// Validate the login form
-		if ( ! $this->form_validation->run())
-		{
-			// Take user back to the form with errors
-			$data['main'] = 'welcome/login_register';
-			$data['title'] = 'Login/Register';
-			$this->load->view('template', $data);			
-		}
-	}
-	
-	public function password_check($pwd)
-	{
-		if ( ! preg_match('/^[-_+*&$#@!a-z0-9]+$/i', $pwd))
-		{
-			$this->form_validation->set_message('password_check', 'The %s field can not be the word "test"');
-			return FALSE;
-		}
 		
-		return TRUE;
+		$this->load->library('session');
+		
+		$this->load->helper('url');
+	}
+	
+	public function index() 
+	{
+		//if ($this->session->userdata('logged_in') === TRUE)
+		{
+			$data['main'] = 'member/home';
+			$data['title'] = 'Welcome';
+			$data['username'] = $this->session->userdata('username');
+			$data['email'] = $this->session->userdata('email');
+			$data['session_id'] = $this->session->userdata('session_id');		
+			$this->load->view('template', $data);		
+		}
+		//else
+		{
+			//redirect('/welcome/', 'location', 301);
+		}
+	}
+	
+	public function logout() 
+	{
+		$this->session->sess_destroy();
 	}
 }
-/* End of file user.php */
-/* Location: ./application/controllers/user.php */
+/* End of file member.php */
+/* Location: ./application/controllers/member.php */
