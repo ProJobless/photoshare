@@ -9,10 +9,8 @@ class Welcome extends MY_Controller
 		
 		$this->load->helper(array('url', 'form'));				
 		$this->load->model('member_model');
-		$this->load->library('form_validation');
-		$this->load->database(); 
-		
-		$this->load->library('session');
+		$this->load->library(array('form_validation', 'session'));		
+		$this->load->database(); 				
 	}
 	
 	public function index()
@@ -51,12 +49,9 @@ class Welcome extends MY_Controller
 					'logged_in' => TRUE
 				);
 				
-				$this->load->library('session');			
-//				echo $user_data['logged_in'];
-				
-				$this->session->set_userdata($user_data);
-				echo $this->session->userdata('email');
-				//redirect('/member/');				
+				//$this->load->library('session');							
+				$this->session->set_userdata($user_data);								
+				redirect('/member/');				
 			}
 			else
 			{

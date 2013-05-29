@@ -15,18 +15,19 @@ class Member extends MY_Controller
 	
 	public function index() 
 	{
-		//if ($this->session->userdata('logged_in') === TRUE)
+		if ($this->session->userdata('logged_in') === TRUE)
 		{
 			$data['main'] = 'member/home';
-			$data['title'] = 'Welcome';
+			$data['title'] = 'Welcome';						
 			$data['username'] = $this->session->userdata('username');
 			$data['email'] = $this->session->userdata('email');
-			$data['session_id'] = $this->session->userdata('session_id');		
+			
+			//$data['session_id'] = $this->session->userdata('session_id');		
 			$this->load->view('template', $data);		
 		}
-		//else
+		else
 		{
-			//redirect('/welcome/', 'location', 301);
+			redirect('/welcome/', 'location', 301);
 		}
 	}
 	
